@@ -5,7 +5,7 @@
 using std::placeholders::_1;
 using std::placeholders::_2;
 
-StereoSlamNode::StereoSlamNode(ORB_SLAM2::System* pSLAM, const string &strSettingsFile, const string &strDoRectify)
+StereoSlamNode::StereoSlamNode(ORB_SLAM3::System* pSLAM, const string &strSettingsFile, const string &strDoRectify)
 :   Node("orbslam"),
     m_SLAM(pSLAM)
 {
@@ -100,7 +100,7 @@ void StereoSlamNode::GrabStereo(const ImageMsg::SharedPtr msgLeft, const ImageMs
     }
     else {
         
-        Tcw = m_SLAM->TrackStereo(cv_ptrLeft->image, cv_ptrRight->image, msgLeft->header.stamp.sec);
+        m_SLAM->TrackStereo(cv_ptrLeft->image, cv_ptrRight->image, msgLeft->header.stamp.sec);
     
     }
 }

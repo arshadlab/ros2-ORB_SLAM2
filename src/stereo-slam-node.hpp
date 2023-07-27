@@ -19,7 +19,7 @@
 class StereoSlamNode : public rclcpp::Node
 {
 public:
-    StereoSlamNode(ORB_SLAM2::System* pSLAM, const string &strSettingsFile, const string &strDoRectify);
+    StereoSlamNode(ORB_SLAM3::System* pSLAM, const string &strSettingsFile, const string &strDoRectify);
 
     ~StereoSlamNode();
 
@@ -29,7 +29,7 @@ private:
 
     void GrabStereo(const sensor_msgs::msg::Image::SharedPtr msgRGB, const sensor_msgs::msg::Image::SharedPtr msgD);
 
-    ORB_SLAM2::System* m_SLAM;
+    ORB_SLAM3::System* m_SLAM;
 
     bool doRectify;
     cv::Mat M1l,M2l,M1r,M2r;
